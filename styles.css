@@ -37,11 +37,22 @@ header h1, header p {
     z-index: 1; /* Asegura que el texto esté por encima del overlay */
 }
 
-header {
+header .nombre-xv {
     text-align: center;
-    color: #fff;
+    color: #f8eff6; /* Color del texto principal */
     padding: 50px 20px;
+    text-shadow: 
+        -0.5px -0.5px 0 #000, /* Sombra negra arriba a la izquierda */
+        0.5px -0.5px 0 #000,  /* Sombra negra arriba a la derecha */
+        0.5px 0.5px 0 #000,  /* Sombra negra abajo a la izquierda */
+        2px 2px 0 #000;   /* Sombra negra abajo a la derecha */
     
+}
+
+header .bienvenida-2{
+    text-align: center;
+    color: #ffffff;
+
 }
 
 
@@ -96,7 +107,7 @@ section {
 }
 
 .contador div {
-    background-image: url(Fondo_Página_Web.jpg);
+    background-color: rgba(100, 150, 244, 0.1);
     color: #2f2323;
     padding: 10px 20px;
     border-radius: 5px;
@@ -128,3 +139,118 @@ section {
 .cuenta-regresiva button:hover {
     background-color: #343a40;
 }
+
+.boton-google {
+    display: inline-block; /* Asegura que se comporte como botón */
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #495057;
+    text-decoration: none; /* Quita el subrayado si es un enlace */
+    border: none; /* Sin bordes */
+    border-radius: 5px;
+    cursor: pointer; /* Cambia el cursor a una mano al pasar */
+    transition: background-color 0.3s ease;
+}
+
+.boton-google:hover {
+    background-color: #343a40; /* Color más oscuro al pasar el cursor */
+}
+.galeria {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 90%;
+}
+
+.galeria h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.carrusel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.carrusel-contenedor {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carrusel-contenedor img {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.carrusel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 10px 15px;
+    z-index: 2;
+}
+
+.carrusel-control.prev {
+    left: 10px;
+}
+
+.carrusel-control.next {
+    right: 10px;
+}
+
+.carrusel-control:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.agradecimiento {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.agradecimiento h2 {
+    font-size: 2em;
+    color: #1a538c;
+    margin-bottom: 15px;
+}
+
+.agradecimiento p {
+    font-size: 1.2em;
+    color: #333;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.agradecimiento .nombres-papas {
+    font-size: 1.8em; /* Aumenta el tamaño de los nombres */
+    font-weight: bold; /* Destaca los nombres */
+    color: #8eabc9; /* Cambia el color a un tono azul destacado */
+    margin: 10px 0;
+}
+
+/* Estilo especial para la palabra "y" */
+.y {
+
+    font-size: 1.2em; /* Reduce ligeramente el tamaño de la "y" */
+    font-weight: normal; /* Quita el peso negrita para diferenciarla */
+    color: #333; /* Cambia el color a gris oscuro */
+    margin: 10px 0; /* Reduce el espacio superior e inferior */
+}
+
