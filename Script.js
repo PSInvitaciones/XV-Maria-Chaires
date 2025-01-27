@@ -19,3 +19,27 @@ END:VCALENDAR`;
 document.getElementById('add-to-calendar').addEventListener('click', function () {
     console.log('El botón fue presionado'); // Prueba si el clic se registra
 });
+const carrusel = document.querySelector('.carrusel-contenedor');
+const prevButton = document.querySelector('.carrusel-control.prev');
+const nextButton = document.querySelector('.carrusel-control.next');
+
+let currentIndex = 0;
+
+function actualizarCarrusel() {
+    const anchoImagen = carrusel.querySelector('img').clientWidth;
+    carrusel.style.transform = `translateX(-${currentIndex * anchoImagen}px)`;
+}
+
+prevButton.addEventListener('click', () => {
+    const totalImagenes = carrusel.children.length;
+    currentIndex = (currentIndex - 1 + totalImagenes) % totalImagenes;
+    actualizarCarrusel();
+});
+
+nextButton.addEventListener('click', () => {
+    const totalImagenes = carrusel.children.length;
+    currentIndex = (currentIndex + 1) % totalImagenes;
+    actualizarCarrusel();
+});
+
+window.addEventListener('resize', actualizarCarrusel);
