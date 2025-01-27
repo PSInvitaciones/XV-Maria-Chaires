@@ -10,22 +10,47 @@
 <body>
 
 <header>
-    <h1>XV Maria Chaires Aguirre 
+    <h1 class="nombre-xv">XV Maria Chaires Aguirre 
     </h1>
-    <p>¡Nos encantaría celebrar este día tan especial contigo!</p>
+    <p class="bienvenida-2">¡Nos encantaría celebrar este día tan especial contigo!</p>
 </header>
+<section class="galeria">
+
+    <div class="carrusel">
+        <button class="carrusel-control prev">&lt;</button>
+        <div class="carrusel-contenedor">
+            <img src="foto1.jpg" alt="Foto 1">
+            <img src="foto2.jpg" alt="Foto 2">
+            <img src="foto3.jpg" alt="Foto 3">
+            <img src="foto4.jpg" alt="Foto 4">
+        </div>
+        <button class="carrusel-control next">&gt;</button>
+    </div>
+</section>
+
+<section class="agradecimiento">
+    <h2>Agradecemos con todo nuestro corazón</h2>
+    <p>Por su apoyo y amor incondicional, este día no sería posible sin ustedes:</p>
+    <p class="nombres-papas">Marco Antonio Chaires Yáñez</p>
+    <p class="y">y</p>
+    <p class="nombres-papas">María Aída Aguirre Arredondo</p>
+
+    <p>Gracias por ser los mejores guías y por hacer de este día un sueño hecho realidad.</p>
+</section>
 
 <section class="ubicacion">
     <h2>Lugar del evento</h2>
     <p>Salón de Eventos Alborada</p>
     <p>Benito Juárez #976, Col. Centro</p>
     <p>Zaragoza, Coahuila</p>
-    <p><a href="https://www.google.com/maps/place/Salon+de+Eventos+Alborada/@28.5025594,-100.9228636,17z/data=!3m1!4b1!4m6!3m5!1s0x86f5474527fdd217:0xf825a7c48886619b!8m2!3d28.5025547!4d-100.9202887!16s%2Fg%2F11pkdwmhv3?entry=ttu&g_ep=EgoyMDI1MDEyMS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Ver ubicación</a></p>
+  <a href="https://www.google.com/maps/place/Salon+de+Eventos+Alborada/@28.5025594,-100.9228636,17z/data=!3m1!4b1!4m6!3m5!1s0x86f5474527fdd217:0xf825a7c48886619b!8m2!3d28.5025547!4d-100.9202887!16s%2Fg%2F11pkdwmhv3?entry=ttu&g_ep=EgoyMDI1MDEyMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" id="boton-google" class="boton-google">Ver ubicación</a>
 </section>
+
 
 <section class="cuenta-regresiva">
     <h2>Save the Date</h2>
     <p>13 de Septiembre 2025</p>
+   
     <p></p>
     <div class="contador">
         <div>
@@ -46,6 +71,7 @@
         </div>
     </div>
 </section>
+
 <script>
     const eventoFecha = new Date('2025-09-13T18:00:00').getTime(); // Cambia la fecha al evento
 
