@@ -68,7 +68,6 @@ END:VCALENDAR`;
 
   if (confirmButton) {
     confirmButton.addEventListener('click', function(e) {
-    //e.preventDefault();
       lanzarEstrellas();
 
       // Después de 2 segundos redirige al enlace (por ejemplo, WhatsApp)
