@@ -73,7 +73,7 @@ END:VCALENDAR`;
 
       // Después de 2 segundos redirige al enlace (por ejemplo, WhatsApp)
       setTimeout(() => {
-        window.open(confirmButton.getAttribute('href'), '_blank');
+        window.location.href = confirmButton.getAttribute('href');
       }, 2000);
     });
   }
