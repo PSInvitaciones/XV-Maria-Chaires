@@ -289,10 +289,3 @@ section {
     pointer-events: none;  /* No bloquean la interacción con otros elementos */
     transition: transform 2s ease-out, opacity 2s ease-out;  /* Animación suave */
 }
-.estrella {
-    border: 1px solid red; /* Esto mostrará un contorno rojo */
-}
-
-.estrella {
-    background-color: yellow; /* Color más llamativo para probar */
-}
