@@ -270,3 +270,7 @@ section {
 .carrusel-control:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+.cuenta-regresiva .boton {
+    display: inline-block;
+    margin-top: 20px; /* Espacio superior para separar del contador */
+}
