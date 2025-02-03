@@ -289,3 +289,52 @@ section {
     pointer-events: none;  /* No bloquean la interacción con otros elementos */
     transition: transform 2s ease-out, opacity 2s ease-out;  /* Animación suave */
 }
+.estrella {
+    border: 1px solid red; /* Esto mostrará un contorno rojo */
+}
+
+.estrella {
+    background-color: yellow; /* Color más llamativo para probar */
+}
+/* 🎉 Estilo para el botón "Agregar a Calendario" */
+#addToCalendar {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #28a745;  /* Verde vibrante */
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  /* Sombra suave */
+
+}
+
+/* 🌟 Efecto Hover */
+#addToCalendar:hover {
+    background-color: #218838;  /* Verde más oscuro al pasar el cursor */
+    transform: scale(1.05);  /* Ligero agrandamiento */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);  /* Sombra más profunda */
+}
+
+/* ✨ Efecto de clic */
+#addToCalendar:active {
+    background-color: #1e7e34;  /* Verde aún más oscuro al hacer clic */
+    transform: scale(1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);  /* Sombra reducida al hacer clic */
+}
+/* 🎯 Centrar el botón con Flexbox */
+.centrar-boton {
+    display: flex;
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;      /* Centra verticalmente (si el contenedor tiene altura) */
+    margin: 20px 0;           /* Espacio arriba y abajo */
+}
+.imagen-lugar{
+    zoom: 09;
+    width: 30px;
+}
