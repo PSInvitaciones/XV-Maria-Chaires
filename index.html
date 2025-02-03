@@ -39,14 +39,19 @@
 </section>
 
 <section class="ubicacion">
-    <section class="ubicacion">
-        <h2>Lugar del evento</h2>
-        <div class="contenedor-lugar">
-          <!----  <img src="imagen-lugar.jpg" alt="Salón de Eventos Alborada" class="imagen-lugar"> -->
-            <p class="direccion-lugar">Benito Juárez #976, Col. Centro, Zaragoza, Coahuila</p>
-        </div>
-        <a href="https://www.google.com/maps/place/Salon+de+Eventos+Alborada/@28.5025594,-100.9228636,17z/data=!3m1!4b1!4m6!3m5!1s0x86f5474527fdd217:0xf825a7c48886619b!8m2!3d28.5025547!4d-100.9202887!16s%2Fg%2F11pkdwmhv3?entry=ttu&g_ep=EgoyMDI1MDEyMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="boton-google">Ver ubicación</a>
-    </section>
+    <h2>Lugar del evento</h2>
+    <div class="contenedor-lugar">
+        <!-- Imagen envuelta en un enlace -->
+        <a href="https://www.google.com/maps/place/Salon+de+Eventos+Alborada/@28.5025594,-100.9228636,17z/data=!3m1!4b1!4m6!3m5!1s0x86f5474527fdd217:0xf825a7c48886619b!8m2!3d28.5025547!4d-100.9202887!16s%2Fg%2F11pkdwmhv3?entry=ttu&g_ep=EgoyMDI1MDEyMS4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+            <img src="Salon Alborada.jpg" alt="Salón de Eventos Alborada" class="imagen-lugar">
+        </a>
+        <p class="direccion-lugar">Benito Juárez #976, Col. Centro, Zaragoza, Coahuila</p>
+    </div>
+    
+    <!-- Botón para ver la ubicación -->
+    <a href="https://www.google.com/maps/place/Salon+de+Eventos+Alborada/@28.5025594,-100.9228636,17z/data=!3m1!4b1!4m6!3m5!1s0x86f5474527fdd217:0xf825a7c48886619b!8m2!3d28.5025547!4d-100.9202887!16s%2Fg%2F11pkdwmhv3?entry=ttu&g_ep=EgoyMDI1MDEyMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="boton-google">Ver ubicación</a>
+</section>
+
     
 </section>
 
@@ -75,7 +80,49 @@
     </div>
     <!-- Botón de Confirmar Asistencia -->
     <a href="https://forms.gle/vpnDTnb24v98yyoAA" target="_blank" class="boton confirmar">Confirmar Asistencia</a>
+    <div class="centrar-boton">
+        <!-- Botón para agregar al calendario -->
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20250913T230000Z%2F20250914T050000Z&details=Fiesta%20de%20quince%20a%C3%B1os%20de%20Mar%C3%ADa%20Chaires%20Aguirre.&location=Benito%20Ju%C3%A1rez%20%23976%2C%20Col.%20Centro%2C%20Zaragoza%2C%20Coahuila&text=XV%20Mar%C3%ADa%20Charies%20Aguirre" id="addToCalendar">Agregar a Calendario</a>
+        </div>
 </section>
+
+<script>
+  document.getElementById('addToCalendar').addEventListener('click', function() {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    
+    // Configuración del evento (ajusta según necesites)
+    var title = encodeURIComponent('Título del Evento');
+    var details = encodeURIComponent('Descripción o detalles del evento');
+    var location = encodeURIComponent('Ubicación del evento');
+    // Fechas en formato: AAAAMMDDTHHmmssZ (en UTC)
+    // Ejemplo: 3 de febrero de 2025, de 13:00 a 14:00 UTC
+    var startDate = '20250203T130000Z';
+    var endDate = '20250203T140000Z';
+    
+    
+    // Detectar dispositivo iOS
+    if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+      // Redirige a la descarga del archivo ICS (asegúrate de tenerlo disponible en tu servidor)
+      window.location.href = 'ruta/a/tu-evento.ics';
+    } 
+    // Detectar Android
+    else if (/android/i.test(ua)) {
+      // Redirige a Google Calendar
+      window.location.href = googleUrl;
+    } 
+    // Para otros dispositivos o si se desea ofrecer ambas opciones
+    else {
+      // Puedes mostrar un menú o mensaje para que el usuario elija su opción
+      var opciones = confirm("¿Deseas agregar el evento a Google Calendar? \n\nPulsa Aceptar para Google Calendar o Cancelar para descargar el archivo ICS.");
+      if (opciones) {
+        window.location.href = googleUrl;
+      } else {
+        window.location.href = 'ruta/a/tu-evento.ics';
+      }
+    }
+  });
+</script>
+
 
 
 </body>
