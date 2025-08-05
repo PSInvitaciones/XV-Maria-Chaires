@@ -32,7 +32,7 @@ header {
     align-items: center; /* Centra el contenido verticalmente */
     justify-content: center; /* Centra el contenido horizontalmente */
     text-align: center;
-    background-image: url('Fondo_Página_Web.jpg'); /* Imagen de fondo */
+    background-image: url('Fotos/Foto1.jpg'); /* Imagen de fondo */
     background-size: cover; /* Cubre el área sin distorsión */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita la repetición */
@@ -216,36 +216,51 @@ section {
     margin-left: 5px;
 }
 
-/* 🎞️ Galería de Fotos */
-.galeria {
-    text-align: center;
-    margin: 50px auto;
-    max-width: 90%;
+@media (max-width: 768px) {
+    .carrusel-contenedor img {
+        width: 180px; /* Imágenes más pequeñas en móvil */
+    }
 }
 
-.carrusel {
+
+/* Contenedor general del carrusel */
+.galeria {
     position: relative;
+    margin: 10px auto;
+    max-width: 1400px;
+    width:100%;
+    overflow: hidden;
     display: flex;
     align-items: center;
-    overflow: hidden;
-    max-width: 600px;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    justify-content: center;
 }
 
+/* Contenedor del carrusel con scroll horizontal */
 .carrusel-contenedor {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px;
+    max-width: 100%;
 }
 
+/* Estilo para las imágenes */
 .carrusel-contenedor img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 450px;
     flex-shrink: 0;
+    border-radius: 10px;
     object-fit: cover;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
 }
 
+.carrusel-contenedor img:hover {
+    transform: scale(1.05);
+}
+
+/* Botones de navegación */
 .carrusel-control {
     position: absolute;
     top: 50%;
@@ -260,16 +275,27 @@ section {
 }
 
 .carrusel-control.prev {
-    left: 10px;
+    left: 0;
 }
 
 .carrusel-control.next {
-    right: 10px;
+    right: 0;
 }
 
 .carrusel-control:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
+/* Opcional: ocultar barra de desplazamiento */
+.carrusel-contenedor::-webkit-scrollbar {
+    display: none;
+}
+.carrusel-contenedor {
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+}
+
+
 .cuenta-regresiva .boton {
     display: inline-block;
     margin-top: 20px; /* Espacio superior para separar del contador */
@@ -337,4 +363,46 @@ section {
 .imagen-lugar{
     zoom: 09;
     width: 30px;
+}
+.seccion-itinerario {
+    background-color: #fefefe;
+    padding: 30px 20px;
+    text-align: center;
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.titulo-itinerario {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    color: #c278b8;
+    margin-bottom: 20px;
+}
+
+.lista-itinerario {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Lora', serif;
+    color: #444;
+    line-height: 1.8;
+    font-size: 1.1em;
+}
+
+.lista-itinerario li {
+    margin-bottom: 10px;
+}
+
+.lista-itinerario .evento {
+    font-weight: bold;
+    color: #a64ca6;
+}
+
+.lista-itinerario .final-itinerario {
+    margin-top: 20px;
+    font-style: italic;
+    color: #666;
+    font-size: 1em;
 }
