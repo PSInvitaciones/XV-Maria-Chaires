@@ -1,8 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
-
-  // ─────────────────────────────────────────
-  // 1. Código para el botón "Add to Calendar"
-  // ─────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+  // ───────────────────────────────────────────────
+  // 1. Botón "Agregar a Calendario" (.ics download)
+  // ───────────────────────────────────────────────
   const addToCalendarButton = document.getElementById('add-to-calendar');
   if (addToCalendarButton) {
     addToCalendarButton.addEventListener('click', function () {
@@ -25,63 +24,46 @@ END:VCALENDAR`;
     });
   }
 
-  // ─────────────────────────────────────────
-  // 2. Código para el carrusel de imágenes
-  // ─────────────────────────────────────────
+  // ───────────────────────────────────────────────
+  // 2. Carrusel de imágenes con scroll horizontal
+  // ───────────────────────────────────────────────
   const carrusel = document.querySelector('.carrusel-contenedor');
   const prevButton = document.querySelector('.carrusel-control.prev');
   const nextButton = document.querySelector('.carrusel-control.next');
-  let currentIndex = 0;
 
-  function actualizarCarrusel() {
-    if (carrusel) {
-      const imagen = carrusel.querySelector('img');
-      if (imagen) {
-        const anchoImagen = imagen.clientWidth;
-        carrusel.style.transform = `translateX(-${currentIndex * anchoImagen}px)`;
-      }
-    }
-  }
+  if (carrusel && prevButton && nextButton) {
+    const scrollAmount = 300; // puedes ajustar este valor si lo deseas
 
-  if (prevButton && carrusel) {
     prevButton.addEventListener('click', () => {
-      const totalImagenes = carrusel.children.length;
-      currentIndex = (currentIndex - 1 + totalImagenes) % totalImagenes;
-      actualizarCarrusel();
+      carrusel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     });
-  }
 
-  if (nextButton && carrusel) {
     nextButton.addEventListener('click', () => {
-      const totalImagenes = carrusel.children.length;
-      currentIndex = (currentIndex + 1) % totalImagenes;
-      actualizarCarrusel();
+      carrusel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
   }
 
-  window.addEventListener('resize', actualizarCarrusel);
-
-  // ─────────────────────────────────────────
-  // 3. Código para el efecto de estrellas en el botón "Confirmar Asistencia"
-  // ─────────────────────────────────────────
+  // ───────────────────────────────────────────────
+  // 3. Confirmación con efecto de estrellas
+  // ───────────────────────────────────────────────
   const confirmButton = document.querySelector('.boton.confirmar');
 
   if (confirmButton) {
-    confirmButton.addEventListener('click', function(e) {
-      e.preventDefault(); 
+    confirmButton.addEventListener('click', function (e) {
+      e.preventDefault();
       lanzarEstrellas();
 
-      // Después de 2 segundos redirige al enlace (por ejemplo, WhatsApp)
+      // Después de 2 segundos, abre el enlace
       setTimeout(() => {
-        window.location.href = confirmButton.getAttribute('href');
+        window.open(confirmButton.getAttribute('href'), '_blank');
       }, 2000);
     });
   }
 
   function lanzarEstrellas() {
-    const cantidadEstrellas = 40; 
+    const cantidadEstrellas = 40;
     for (let i = 0; i < cantidadEstrellas; i++) {
-      setTimeout(crearEstrella, i * 50); 
+      setTimeout(crearEstrella, i * 50);
     }
   }
 
@@ -89,54 +71,53 @@ END:VCALENDAR`;
     const estrella = document.createElement('div');
     estrella.classList.add('estrella');
 
-    // Decidir si la estrella viene desde la izquierda o la derecha
+    // Izquierda o derecha
     const desdeIzquierda = Math.random() < 0.5;
     estrella.style.left = desdeIzquierda ? '-20px' : window.innerWidth + 'px';
 
-    // Posición vertical aleatoria
+    // Posición vertical
     const posY = Math.random() * window.innerHeight;
     estrella.style.top = posY + 'px';
 
-    // Tamaño aleatorio de las estrellas
-    const tamano = Math.random() * 5 + 5;  // Ahora serán entre 5px y 10px
+    // Tamaño aleatorio
+    const tamano = Math.random() * 5 + 5;
     estrella.style.width = tamano + 'px';
     estrella.style.height = tamano + 'px';
-    
 
-    // Estilo brillante
-    estrella.style.backgroundColor = 'rgba(255, 255, 255, 1)';  // Máxima opacidad
-estrella.style.boxShadow = '0 0 20px rgba(255, 255, 255, 1)';  // Sombra más intensa y brillante
+    // Color y brillo
+    const colores = ['#FFD700', '#FF69B4', '#7FFFD4', '#ADFF2F', '#FFFFFF'];
+    const color = colores[Math.floor(Math.random() * colores.length)];
+    estrella.style.backgroundColor = color;
+    estrella.style.boxShadow = `0 0 20px ${color}`;
 
+    // Estilos generales
     estrella.style.borderRadius = '50%';
     estrella.style.position = 'fixed';
     estrella.style.zIndex = '1000';
     estrella.style.pointerEvents = 'none';
-
-    const colores = ['#FFD700', '#FF69B4', '#7FFFD4', '#ADFF2F', '#FFFFFF'];
-estrella.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
-estrella.style.boxShadow = `0 0 20px ${estrella.style.backgroundColor}`;
-
+    estrella.style.opacity = '1';
+    estrella.style.transition = 'transform 2s ease-out, opacity 2s ease-out';
 
     document.body.appendChild(estrella);
 
-    // Animación para mover las estrellas hacia el centro y desaparecer
+    // Movimiento hacia el centro y desaparición
     setTimeout(() => {
-        const destinoX = window.innerWidth / 2 - (desdeIzquierda ? 0 : estrella.clientWidth);
-        const destinoY = window.innerHeight / 2 - estrella.clientHeight;
-        estrella.style.transform = `translate(${destinoX - parseFloat(estrella.style.left)}px, ${destinoY - posY}px) scale(0.5)`;
-        estrella.style.opacity = '0';
+      const destinoX = window.innerWidth / 2 - (desdeIzquierda ? 0 : estrella.clientWidth);
+      const destinoY = window.innerHeight / 2 - estrella.clientHeight;
+      estrella.style.transform = `translate(${destinoX - parseFloat(estrella.style.left)}px, ${destinoY - posY}px) scale(0.5)`;
+      estrella.style.opacity = '0';
     }, 50);
 
-    // Eliminar la estrella después de 2 segundos
+    // Eliminar estrella tras animación
     setTimeout(() => {
-        estrella.remove();
+      estrella.remove();
     }, 2000);
   }
 
-  // ─────────────────────────────────────────
-  // 4. Código para la cuenta regresiva
-  // ─────────────────────────────────────────
-  const eventoFecha = new Date('2025-09-13T21:00:00').getTime();
+  // ───────────────────────────────────────────────
+  // 4. Cuenta regresiva hasta el evento
+  // ───────────────────────────────────────────────
+  const eventoFecha = new Date('2025-09-13T18:00:00').getTime();
 
   function actualizarCuentaRegresiva() {
     const ahora = new Date().getTime();
@@ -159,5 +140,4 @@ estrella.style.boxShadow = `0 0 20px ${estrella.style.backgroundColor}`;
   }
 
   const intervalo = setInterval(actualizarCuentaRegresiva, 1000);
-
 });
